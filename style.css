@@ -203,6 +203,25 @@ section {
   pointer-events: none;
 }
 
+/* Blocks all mouse/touch interaction with the iframe */
+.preview-block {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: default;
+}
+
+/* Fades out the nav strip so open/closed status isn't shown */
+.preview-nav-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--surface) 60%, transparent);
+  z-index: 3;
+}
+
 .card-body {
   padding: 1.5rem;
 }

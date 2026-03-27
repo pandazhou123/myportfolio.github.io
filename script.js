@@ -3,15 +3,17 @@ function scaleIframePreviews() {
   document.querySelectorAll('.card-preview').forEach((preview) => {
     const iframe = preview.querySelector('iframe');
     if (!iframe) return;
-    const scale = preview.offsetWidth / 1280;
+    const containerW = preview.getBoundingClientRect().width;
+    const containerH = preview.getBoundingClientRect().height;
+    const scale = containerW / 1280;
     iframe.style.width = '1280px';
-    iframe.style.height = Math.ceil(preview.offsetHeight / scale) + 'px';
+    iframe.style.height = Math.ceil(containerH / scale) + 'px';
     iframe.style.transform = `scale(${scale})`;
     iframe.style.transformOrigin = 'top left';
   });
 }
 
-scaleIframePreviews();
+window.addEventListener('load', scaleIframePreviews);
 window.addEventListener('resize', scaleIframePreviews);
 
 // Fade-in on scroll
